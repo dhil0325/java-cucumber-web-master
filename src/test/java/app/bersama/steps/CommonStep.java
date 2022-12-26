@@ -31,8 +31,13 @@ public class CommonStep {
         String password = "";
 
         switch (credentialType) {
-            case "valid_user":
+            case "valid_user1":
                 userName = "lageming54@gmail.com";
+                password = "fadhil45";
+                break;
+
+            case "valid_user2":
+                userName = "frozt.fadhil@gmail.com";
                 password = "fadhil45";
                 break;
 

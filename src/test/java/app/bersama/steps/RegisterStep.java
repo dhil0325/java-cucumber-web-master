@@ -27,7 +27,7 @@ public class RegisterStep {
         switch (registerType) {
             case "valid_register":
                 nama = "Fadhil";
-                email = "fadhil54532@gmail.com";
+                email = "fadhil589646@gmail.com";
                 password = "fadhil45";
                 break;
 

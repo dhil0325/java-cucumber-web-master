@@ -4,7 +4,7 @@ Feature: Order
   @order @positive
   Scenario Outline: As a user i should be able to order product3
     Given navigate to url "https://secondhand-store.herokuapp.com/"
-    * login as "valid_user"
+    * login as "valid_user2"
     * current url should be "https://secondhand-store.herokuapp.com/login"
     * select product to order
     * order product
