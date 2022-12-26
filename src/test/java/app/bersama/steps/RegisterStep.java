@@ -16,10 +16,28 @@ public class RegisterStep {
         loginPage.userRegister();
     }
 
-    @When("fill form register and click register")
-    public void fillFormRegisterAndClickRegister() {
+    @When("fill form register and click register {string}")
+    public void fillFormRegisterAndClickRegister(String registerType) {
+
+
+        String nama = "";
+        String email = "";
+        String password = "";
+
+        switch (registerType) {
+            case "valid_register":
+                nama = "Fadhil";
+                email = "fadhil54532@gmail.com";
+                password = "fadhil45";
+                break;
+
+
+            default:
+                throw new RuntimeException("credential type doesn't exist");
+        }
+
         RegisterPage registerPage = new RegisterPage(DriverManager.getInstance().getDriver());
-        registerPage.userRegister("Fadhil", "fadhil12331@gmail.com", "password321");
+        registerPage.userRegister(nama, email, password);
     }
 
     @Then("see verification alert with value {string}")

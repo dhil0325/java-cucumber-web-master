@@ -28,9 +28,6 @@ public class HomePage {
     @FindBy(xpath = "//*[@id='root']/div/div/div[2]/div[2]/div[1]/div")
     private WebElement displayProduct;
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div/a")
-    private WebElement addProduct;
-
     @FindBy(id = "user")
     private WebElement userMenu;
 
@@ -56,11 +53,9 @@ public class HomePage {
 
     public void validateLogin() {
         Keyword.validateElementIsVisibleAndEnabled(userMenu);
+        Keyword.validateElementIsVisibleAndEnabled(productDisplay);
     }
 
-    public void addProduct() {
-        Keyword.tapElement(addProduct);
-    }
 
     public void userLogout() {
         Keyword.tapElement(userMenu);
@@ -74,5 +69,9 @@ public class HomePage {
 
     public void orderProduct() {
         Keyword.tapElement(productDisplay);
+    }
+
+    public void tapListBar() {
+        Keyword.tapElement(ListBar);
     }
 }

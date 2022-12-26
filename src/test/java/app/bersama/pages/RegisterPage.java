@@ -34,6 +34,9 @@ public class RegisterPage {
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[2]/form/div[1]/strong")
     private WebElement verifMessage;
 
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[2]/form/div[3]/div")
+    private WebElement snackbarErrorMessage;
+
     public void userRegister(String nama, String email, String password) {
         Keyword.inputText(namaField, nama);
         Keyword.inputText(emailField, email);

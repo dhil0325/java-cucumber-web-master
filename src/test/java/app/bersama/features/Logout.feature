@@ -7,3 +7,4 @@ Feature: Logout
     * login as "valid_user"
     When click button logout
     Then current url should be "https://secondhand-store.herokuapp.com/"
+    * user take screenshot full page with name "positive_logout_001"

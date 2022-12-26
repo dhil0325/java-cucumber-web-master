@@ -53,6 +53,8 @@ public class CommonStep {
     @Then("current url should be {string}")
     public void currentUrlShouldBe(String url) {
         Keyword.assertCurrentUrl(url);
+        HomePage homePage = new HomePage(DriverManager.getInstance().getDriver());
+        homePage.validateLogin();
     }
 
     @Then("see alert notification {string}")
@@ -74,7 +76,8 @@ public class CommonStep {
     }
 
 
-
-
-
+    @Then("user take screenshot full page with name {string}")
+    public void userTakeScreenshotFullPageWithName(String fileName) {
+        Keyword.takeScreenshot(fileName);
+    }
 }

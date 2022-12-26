@@ -1,9 +1,7 @@
 package app.bersama.steps;
 
 import app.bersama.DriverManager;
-import app.bersama.pages.HomePage;
-import app.bersama.pages.LoginPage;
-import app.bersama.pages.ProductPage;
+import app.bersama.pages.*;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
