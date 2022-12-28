@@ -34,6 +34,9 @@ public class RegisterPage {
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[2]/form/div[1]/strong")
     private WebElement verifMessage;
 
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[2]/form/div[1]/strong")
+    private WebElement getSnackbarErrorMessage;
+
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[2]/form/div[3]/div")
     private WebElement snackbarErrorMessage;
 
@@ -47,6 +50,12 @@ public class RegisterPage {
     public void verifyMessage(String expectedMessage) {
         Keyword.waitElementToBeDisplayed(verifMessage);
         String actual = verifMessage.getText();
+        Assert.assertEquals(actual, expectedMessage);
+    }
+
+    public void setGetSnackbarErrorMessage(String expectedMessage) {
+        Keyword.waitElementToBeDisplayed(getSnackbarErrorMessage);
+        String actual = getSnackbarErrorMessage.getText();
         Assert.assertEquals(actual, expectedMessage);
     }
 }

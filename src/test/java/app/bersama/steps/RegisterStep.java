@@ -27,6 +27,12 @@ public class RegisterStep {
         switch (registerType) {
             case "valid_register":
                 nama = "Fadhil";
+                email = "fadhil05856@gmail.com";
+                password = "fadhil45";
+                break;
+
+            case "registered_email":
+                nama = "Fadhil";
                 email = "fadhil589646@gmail.com";
                 password = "fadhil45";
                 break;
@@ -44,5 +50,11 @@ public class RegisterStep {
     public void seeVerificationAlertWithValue(String value) {
         new RegisterPage(DriverManager.getInstance().getDriver()).
                 verifyMessage(value);
+    }
+
+    @Then("see verification error alert with value {string}")
+    public void seeVerificationErrorAlertWithValue(String value) {
+            new RegisterPage(DriverManager.getInstance().getDriver()).
+                    setGetSnackbarErrorMessage(value);
     }
 }
