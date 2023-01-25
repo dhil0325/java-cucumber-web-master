@@ -8,8 +8,10 @@ import app.bersama.pages.RegisterPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.security.Key;
+import java.util.Random;
 
 /**
  * @author regiewby on 05/12/22
@@ -23,9 +25,20 @@ public class CommonStep {
         HomePage homePage = new HomePage(DriverManager.getInstance().getDriver());
         homePage.tapLogin();
     }
+    protected String getRandomEmailGenerator() {
+        String alphanumeric = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder email = new StringBuilder();
+        Random rndemail = new Random();
+        while (email.length() < 8) {
+            int index = (int) (rndemail.nextFloat() * alphanumeric.length());
+            email.append(alphanumeric.charAt(index));
+        }
+        String RandomEmail = email.toString();
+        return RandomEmail;
+    }
 
     @When("login as {string}")
-    public void loginAs(String credentialType) {
+    public void loginAs (String credentialType) {
 
         String userName = "";
         String password = "";
@@ -42,7 +55,7 @@ public class CommonStep {
                 break;
 
             case "invalid_user":
-                userName = "asdasd@gmail.com";
+                userName = getRandomEmailGenerator() + "@gmail.com";
                 password = "password01";
                 break;
 
