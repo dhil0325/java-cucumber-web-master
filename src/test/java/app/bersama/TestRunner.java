@@ -26,8 +26,9 @@ import java.time.Duration;
 public class TestRunner extends AbstractTestNGCucumberTests {
 
     @Override
-    @DataProvider(parallel = true)
+    @DataProvider(parallel = false)
     public Object[][] scenarios() {
+
         return super.scenarios();
     }
 
@@ -42,5 +43,6 @@ public class TestRunner extends AbstractTestNGCucumberTests {
     @AfterMethod
     public void teardownBrowser() {
         DriverManager.getInstance().getDriver();
+
     }
 }

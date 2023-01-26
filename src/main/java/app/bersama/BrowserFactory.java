@@ -27,7 +27,7 @@ public class BrowserFactory {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
             options.setHeadless(true);
-            options.addArguments("--disable-gpu");
+            options.addArguments("--headless");
             webDriver = new ChromeDriver(options);
 
         // launch firefox browser

@@ -5,11 +5,49 @@ import app.bersama.Keyword;
 import app.bersama.pages.HomePage;
 import app.bersama.pages.LoginPage;
 import app.bersama.pages.RegisterPage;
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
+
+import java.util.Random;
+import java.util.random.RandomGenerator;
 
 public class RegisterStep {
+
+    public String getRandomFullName() {
+        Faker faker = new Faker();
+        String name = faker.name().fullName();
+        return name;
+    }
+
+    protected String getRandomNumGenerator() {
+        String numeric = "1234567890";
+        StringBuilder num = new StringBuilder();
+        Random rndnum = new Random();
+        while(num.length() <3) {
+            int index = (int) (rndnum.nextFloat() * numeric.length());
+            num.append(numeric.charAt(index));
+        }
+        String RandomNum = num.toString();
+        return RandomNum;
+    }
+
+    protected String getRandomPassword() {
+        String alphanumeric = "abcdefghijklmnopqrstuvwxyz123456789";
+        StringBuilder password = new StringBuilder();
+        Random rndpass = new Random();
+        while(password.length() <7) {
+            int index = (int) (rndpass.nextFloat() * alphanumeric.length());
+            password.append(alphanumeric.charAt(index));
+        }
+            String RandomPassword = password.toString();
+            return RandomPassword;
+    }
+
+
     @Given("navigate to register page")
     public void navigate_to_register_page() {
         LoginPage loginPage = new LoginPage(DriverManager.getInstance().getDriver());
@@ -26,15 +64,9 @@ public class RegisterStep {
 
         switch (registerType) {
             case "valid_register":
-                nama = "Fadhil";
-                email = "fadhil05856@gmail.com";
-                password = "fadhil45";
-                break;
-
-            case "registered_email":
-                nama = "Fadhil";
-                email = "fadhil589646@gmail.com";
-                password = "fadhil45";
+                nama =  getRandomFullName();
+                email = nama.split(" ")[0] + getRandomNumGenerator() + "@gmail.com";
+                password = getRandomPassword();
                 break;
 
 
@@ -50,11 +82,5 @@ public class RegisterStep {
     public void seeVerificationAlertWithValue(String value) {
         new RegisterPage(DriverManager.getInstance().getDriver()).
                 verifyMessage(value);
-    }
-
-    @Then("see verification error alert with value {string}")
-    public void seeVerificationErrorAlertWithValue(String value) {
-            new RegisterPage(DriverManager.getInstance().getDriver()).
-                    setGetSnackbarErrorMessage(value);
     }
 }
