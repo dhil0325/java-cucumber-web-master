@@ -17,16 +17,22 @@ import java.util.random.RandomGenerator;
 
 public class RegisterStep {
 
-    protected String getRandomEmailGenerator() {
-        String alphanumeric = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-        StringBuilder email = new StringBuilder();
-        Random rndemail = new Random();
-        while(email.length() <8) {
-            int index = (int) (rndemail.nextFloat() * alphanumeric.length());
-            email.append(alphanumeric.charAt(index));
+    public String getRandomFullName() {
+        Faker faker = new Faker();
+        String name = faker.name().fullName();
+        return name;
+    }
+
+    protected String getRandomNumGenerator() {
+        String numeric = "1234567890";
+        StringBuilder num = new StringBuilder();
+        Random rndnum = new Random();
+        while(num.length() <3) {
+            int index = (int) (rndnum.nextFloat() * numeric.length());
+            num.append(numeric.charAt(index));
         }
-        String RandomEmail = email.toString();
-        return RandomEmail;
+        String RandomNum = num.toString();
+        return RandomNum;
     }
 
     protected String getRandomPassword() {
@@ -39,12 +45,6 @@ public class RegisterStep {
         }
             String RandomPassword = password.toString();
             return RandomPassword;
-    }
-
-    public String getRandomName() {
-        Faker faker = new Faker();
-        String name = faker.name().fullName();
-        return name;
     }
 
 
@@ -64,8 +64,8 @@ public class RegisterStep {
 
         switch (registerType) {
             case "valid_register":
-                nama =  getRandomName();
-                email = getRandomEmailGenerator() + "@gmail.com";
+                nama =  getRandomFullName();
+                email = nama.split(" ")[0] + getRandomNumGenerator() + "@gmail.com";
                 password = getRandomPassword();
                 break;
 
