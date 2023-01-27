@@ -16,7 +16,7 @@ import java.time.Duration;
  */
 public class Keyword {
 
-//    private static WebDriver webDriver;
+    private static WebDriver webDriver;
 //
 //    public Keyword() {
 //        webDriver = DriverManager.getInstance().getDriver();
@@ -80,17 +80,17 @@ public class Keyword {
 //        }
 //    }
 //
-//    public static void alertHandler(boolean isAccepted) {
-//        if (isAccepted) {
-//            webDriver.switchTo().alert().accept();
-//        } else {
-//            webDriver.switchTo().alert().dismiss();
-//        }
-//    }
+    public static void alertHandler(boolean isAccepted) {
+        if (isAccepted) {
+            webDriver.switchTo().alert().accept();
+        } else {
+            webDriver.switchTo().alert().dismiss();
+        }
+    }
 //
-//    public static String alertGetText() {
-//        return webDriver.switchTo().alert().getText();
-//    }
+    public static String alertGetText() {
+        return webDriver.switchTo().alert().getText();
+    }
 //}
 
     public static void navigateToUrl(String url) {
